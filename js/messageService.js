@@ -4,7 +4,12 @@ angular.module('chatroom').service('messageService', function($http){
   //On the lines below create a getMessages method. This method will retrieve data from the backend.
   //The url for the get request should be 'http://practiceapi.devmounta.in/api/chats'
   //Be sure to return whatever gets returned from $http so you can call .then in your controller.
-
+    this.getMessages = function() {
+      return $http ({
+        method: 'GET',
+        url: 'http://practiceapi.devmounta.in/api/chats'
+      });
+    };
 
 
 
@@ -13,6 +18,19 @@ angular.module('chatroom').service('messageService', function($http){
   //Because we're making a POST request, we need a way to tell the server the data we want to give it, in your $http call (along with url and method) have a data property which has a value that is equal to another object with a key of message and a value of the message being passed to parse. IE data: {message: yourMessage}
   //Also, remember that $http returns a promise. So if you return the whole $http call (return $http(...)), you can then use .then in your controller.
 
+
+  //is this data object correct? i feel like ill need to change message: yourMessage somehow
+
+  //i needed to put the value of the message as a parameter, then in the controller i needed to convince the function that yourMessage was equal to the message in the index.html
+  this.postMessage = function(yourMessage) {
+    return $http ({
+      method: 'POST',
+      url: 'http://practiceapi.devmounta.in/api/chats',
+      data: {
+        message: yourMessage
+      }
+    });
+  };
 
 
 
