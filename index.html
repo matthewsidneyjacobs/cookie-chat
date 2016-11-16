@@ -12,8 +12,8 @@
         <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
       </form>
       <div class="messages-container">
-        <p ng-repeat="message in messages ">
-          {{message.message}}<br/> {{message.cookie}}</p>
+        <p class="chat" ng-repeat="message in messages  | orderBy : '-createdAt'">
+          {{message.message}}<br/> {{message.cookie}} <br/> {{message.createdAt | date: 'hh:mm:ssa'}}  {{ message.createdAt | date}}</p>
       </div>
 
       <div class="cookie-container">

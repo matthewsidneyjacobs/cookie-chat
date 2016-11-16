@@ -15,6 +15,15 @@ body {
   background: rgba(255, 255, 255, 0.86);
   padding: 5px;
   border-radius: 10px;
+  border: 1px solid black;
+}
+
+.messages-container {
+    border: 1px solid blue;
+}
+
+.chat {
+  border: 1px solid red;
 }
 
 .main-container h1 {
