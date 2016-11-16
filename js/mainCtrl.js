@@ -9,7 +9,14 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
       })
     }
 
-    // $scope.getMessages();
+    $scope.getCookies = function() {
+      messageService.getCookies().then(function(response) {
+        $scope.messages = response.data.cookies;
+        console.log(response);
+      })
+    }
+
+     $scope.getCookies();
 
 
   //The postMessage function will take whatever the user typed in (hint: look at the html and see what ng-model correlates to on the input box),
@@ -20,9 +27,24 @@ angular.module('chatroom').controller('mainCtrl', function($scope, messageServic
   $scope.postMessage = function(message) {
     messageService.postMessage(message).then(function(response) {
       $scope.messages = response.data.message;
+        console.log('it worked')
+        $scope.message = '';
     })
   }
 
+  $scope.postCookie = function(COOKIES) {
+    messageService.postCookie(COOKIES).then(function(response) {
+      $scope.cookies = response.data.cookieType
+      console.log("test")
+    })
+
+  }
+
+    // $scope.postCookie(message);
+
+
+
+    $scope.postCookie();
 
   //uncomment this code when your getMessages function is finished
   //This goes and gets new data every second, which mimicking a chat room experience.
